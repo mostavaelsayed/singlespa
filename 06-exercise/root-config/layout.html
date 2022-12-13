@@ -1,0 +1,25 @@
+<single-spa-router>
+    <application name="navBar"></application>
+    <route path="/profile">
+        <h1>profile</h1>
+        <route path="/" exact>
+            <application name="settings"></application>
+            <application name="subscription"></application>
+        </route>
+        <a href="/profile/password" onclick="singleSpaNavigate(event)">change password</a>
+        <route default>
+            <h1>Unknown settings route</h1>
+        </route>
+        <redirect from="/profile/change-password" to="/profile/password"></redirect>
+        <route path="/password">
+            <h1>change your password</h1>
+        </route>
+    </route>
+    <redirect from="settings" to="profile"></redirect>
+    <route path="/" exact>
+        <application name="home"></application>
+    </route>
+    <route default>
+        <application name="notFound"></application>
+    </route>
+</single-spa-router>
